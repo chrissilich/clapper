@@ -71,8 +71,22 @@ section {
 		}
 	}
 
+	&.load {
+		position: relative;
+		height: percentage(2/6);
+
+		button {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			padding: 10px 20px;
+			font-size: 15pt;
+		}
+	}
 
 	&.stripes {
+		display: none;
 		position: relative;
 		height: percentage(2/6);
 		> div {

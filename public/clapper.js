@@ -4,6 +4,8 @@
 
 	var $stripes = $(".stripes"),
 		$topStripe = $(".stripes > div").first(),
+		$load = $(".load"),
+		$loadAudio = $(".load-audio"),
 		$flash = $(".flash"),		
 		$production = $("input[name='production']").val( cookies("production")?cookies("production"):"" ),
 		$director = $("input[name='director']").val( cookies("director")?cookies("director"):"" ),
@@ -18,14 +20,20 @@
 		socket = io();
 		
 
-	// set initial values
+
+
+
+	// date/time
 	$date.val( moment().format("YYYY-MM-DD") );
 	var updateTime = function() {
-		$time.val( moment().format("HH:MM:SS.SSS") );
+		$time.val( moment().format("HH:MM:ss.SS") );
 		requestAnimationFrame(updateTime);
 	}
 	requestAnimationFrame(updateTime);
 	
+
+
+
 
 	var doRoomChange = function(){
 		if (cookies("room") && cookies("room") != $room.val()) { // new entry doesn't match
@@ -42,6 +50,10 @@
 	doRoomChange()
 
 
+
+
+
+
 	var doSync = function(){
 		var name = $(this).attr("name");
 		var val = $(this).val();
@@ -52,6 +64,9 @@
 
 	}
 	$syncable.on("keyup", doSync);
+
+
+
 
 
 	var doCookie = function(){
@@ -67,6 +82,10 @@
 	$cookieable.on("keyup", doCookie);
 
 
+
+
+
+
 	socket.on("sync-down", function(data) {
 		if (data.id == socket.id) return; // kill self-updating
 		console.log(data, $("input.syncable[name='"+data.name+"']"), data.val);
@@ -74,22 +93,58 @@
 	})
 
 
+
+
+
+
+
 	// audio and animation logic
 	var clapSound = new Howl({
-		src: ['assets/audio/clap.mp3'],
-		onplay: function() {
-			console.log("clap sound play")
+		src: ['assets/audio/clap.webm', 'assets/audio/clap.mp3']
+	})
+	clapSound.once("play", function() {
+		console.log("clapper sound play")
+		clapSound.pause();
+		$load.hide();
+		$stripes.show();
+	})
+	$loadAudio.on("click", function() {
+		$(this).hide();
+		clapSound.play();
+	})	
+	
+	$stripes.on("click", function() {
+
+		var now = Date.now();
+		console.log(now);
+		socket.emit("clap", {time: now + 500, room: cookies("room"), id: socket.id});
+
+	})
+
+
+	socket.on("clap-down", function(data) {
+		// if (data.id == socket.id) return; // kill self-updating
+		
+		var now = Date.now();
+		var clapTime = data.time;
+		var dif = clapTime - now;
+		console.log("wait", dif);
+
+		setTimeout(function() {
+			clapSound.seek(0).play();
 			TweenMax.fromTo($topStripe, 1, {rotation: -45}, {rotation: 0, ease: Linear.easeNone, onComplete: function(){
 				TweenMax.fromTo($flash, 1, {autoAlpha: 1}, {autoAlpha: 0, ease: Linear.easeNone});
 			}})
-		}
-	})
-	
-	$stripes.on("click", function() {
-		clapSound.play();
+		}, dif)
+		
 	})
 
+
 })();
+
+
+
+
 
 
 
@@ -117,3 +172,5 @@
             clearTimeout(id);
         };
 }());
+
+

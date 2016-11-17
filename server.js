@@ -31,6 +31,11 @@ io.on('connection', function(socket){
 		io.to(data.room).emit("sync-down", data);
 	})
 
+	socket.on("clap", function(data) {
+		console.log("clap", data);
+		io.to(data.room).emit("clap-down", data);
+	})
+
 	socket.on('disconnect', function(){
 		console.log('a user disconnected');
 	});	
