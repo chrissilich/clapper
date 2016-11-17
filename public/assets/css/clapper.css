@@ -1,0 +1,128 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  box-sizing: border-box; }
+
+body {
+  background: black;
+  color: white;
+  font-family: Helvetica, Arial, sans-serif; }
+
+.flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  visibility: hidden;
+  z-index: 10; }
+
+section {
+  position: relative;
+  height: 16.6666666667%;
+  border-bottom: 5px solid #999; }
+  section p {
+    padding: 40px 10px 10px 10px; }
+  section .subdiv {
+    float: left;
+    position: relative;
+    border-right: 5px solid #999; }
+    section .subdiv.half {
+      width: 50%; }
+    section .subdiv.third {
+      width: 33.3333333333%; }
+    section .subdiv:last-child {
+      border-right: 0; }
+  section h2 {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 18pt;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px; }
+  section input {
+    background: #111;
+    border: 3px solid transparent;
+    color: white;
+    font-size: 60pt;
+    outline: none;
+    width: 100%;
+    height: 100%; }
+    section input:focus {
+      border-color: white; }
+  section.stripes {
+    position: relative;
+    height: 33.3333333333%; }
+    section.stripes > div {
+      position: relative;
+      height: 50%;
+      width: 100%;
+      overflow: hidden;
+      transform-origin: bottom left; }
+      section.stripes > div:nth-child(1) > div {
+        transform: rotate(-45deg) translateY(-25%) scaleY(4); }
+      section.stripes > div:nth-child(2) > div {
+        transform: rotate(45deg) translateY(-25%) scaleY(4); }
+      section.stripes > div > div {
+        position: absolute;
+        width: 8%;
+        height: 100%;
+        background: white;
+        transform-origin: 50% 50%; }
+        section.stripes > div > div:nth-child(2) {
+          left: 20%; }
+        section.stripes > div > div:nth-child(3) {
+          left: 40%; }
+        section.stripes > div > div:nth-child(4) {
+          left: 60%; }
+        section.stripes > div > div:nth-child(5) {
+          left: 80%; }
+        section.stripes > div > div:nth-child(6) {
+          left: 100%; }

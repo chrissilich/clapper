@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<title>Clapper Board</title>
+
+		<link rel="stylesheet" type="text/css" href="assets/css/clapper.css">
+	</head>
+	<body>
+
+		<div class="flash"></div>
+
+		<section class="stripes">
+			<div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</section>
+
+		<section class="production">
+			<h2>Production</h2>
+			<input name="production" class="cookieable syncable" type="text">
+		</section>
+
+		<section class="director">
+			<h2>Director</h2>
+			<input name="director" class="cookieable syncable" type="text">
+		</section>
+
+
+		<section class="date-time">
+			<div class="subdiv half"><h2>Time</h2><input name="time" disabled type="text"></div>
+			<div class="subdiv half"><h2>Date</h2><input name="date" disabled type="text"></div>
+		</section>
+
+		<section class="camera-scene-take">
+			<div class="subdiv third"><h2>Camera</h2><input name="camera" class="cookieable" type="text" value="A"></div>
+			<div class="subdiv third"><h2>Scene</h2><input name="scene" class="cookieable syncable" type="text" value="1"></div>
+			<div class="subdiv third"><h2>Take</h2><input name="take" class="cookieable syncable" type="text" value="1"></div>
+		</section>
+
+		<section class="room">
+			<h2>Sync code</h2>
+			<p>Enter any name or phrase here. Any other Clappers with the same thing will sync up.</p>
+			<input name="room" type="text">
+		</section>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/cookiesjs/1.4.0/cookies.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.1/howler.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="clapper.js"></script>
+
+	</body>
+</html>
